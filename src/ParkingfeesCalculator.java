@@ -17,23 +17,23 @@ public class ParkingfeesCalculator {
                  throw new Exception("Invalid Duration");
              }
              int originalHours=hours;
-             if(hours>2){
+            int freeHours=Math.min(hours,2);
+             if(freeHours<=2){
                  totalFees=0;
              }
-             //int freeHours;
-             int hoursAfter2=hours-2;
+             int hoursAfter2=hours-freeHours;
              int bracketHours=0;
              //if(hoursAfter2<0){
                  bracketHours=Math.min(hoursAfter2,3);
                  feesPast2Hours=bracketHours*10;
              //}
-             int hoursAfter5=hours-bracketHours-2;
-            // if (hoursAfter5<0){
+             int hoursAfter5=hoursAfter2-bracketHours;
+             if (hoursAfter5>0){
                  fees=hoursAfter5*15;
                  //System.out.println("Fees at 5"+fees);
-             //}
+             }
              totalFees=feesPast2Hours+fees;
-             System.out.println("Here is a breakdown of the hours you parked:"+originalHours+" hours = "+bracketHours+" for R 10 and "+hoursAfter5+" for R 15");
+             System.out.println("Here is a breakdown of the hours you parked:"+originalHours+" hours = "+freeHours+" for free"+" "+bracketHours+" for R 10 and "+hoursAfter5+" for R 15");
              System.out.println("Total Fees: "+totalFees);
         }catch (Exception e){
             e.printStackTrace();
