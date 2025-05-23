@@ -6,9 +6,6 @@ import java.util.Map;
 public class MapCollection {
     Map<Integer, List<String>> mapCollection=new HashMap<>();
 
-    public static void main(String[]args){
-        mapCollection();
-    }
 
     public static void mapCollection(){
         Map<Integer, List<String>> mapCollection=new HashMap<>();
